@@ -1,0 +1,8 @@
+<form action="/rectangle/calc" method="post">
+    <input type="number" name="width" placeholder="Chiều rộng"/>
+    <input type="number" name="height" placeholder="Chiều dài"/>
+    <button type="submit">Tính</button>
+</form>
+
+<p th:text="'Diện tích: dài * rộng =  ' + ${area}"></p>
+<p th:text="'Chu vi: 2 * ( dài + rộng) =' + ${perimeter}"></p>
