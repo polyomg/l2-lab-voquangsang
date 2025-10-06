@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="view(title, content)">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:replace="${title}">TITLE</title>
+    <style>
+        body { font-family: "Segoe UI", Arial, sans-serif; margin: 20px; }
+        header, footer { padding: 8px 0; }
+        nav { margin: 10px 0; }
+        article { margin-top: 12px; }
+    </style>
+</head>
+<body>
+<header>
+    <h1 th:text="#{header.name}">Online Shopping</h1>
+</header>
+
+<nav th:replace="~{menu}"></nav>
+
+<article th:replace="${content}">CONTENT</article>
+
+<footer>
+    <hr>
+    <th:block th:utext="#{footer.copy}">
+        &copy; 2024 by FPT Polytechnic. All rights reserved.
+    </th:block>
+</footer>
+</body>
+</html>

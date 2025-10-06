@@ -1,0 +1,11 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout::view(~{::title}, ~{::article})}">
+<head><title>Trang chủ</title></head>
+<body>
+<article>
+    <h1 th:text="#{menu.home}">Trang chủ</h1>
+    <p>Chào mừng bạn đến với trang Lab 4 — Thymeleaf.</p>
+    <img src="/uploads/photo.jpg" alt="photo" width="200" />
+</article>
+</body>
+</html>
