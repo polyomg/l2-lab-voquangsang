@@ -17,7 +17,7 @@ public class StaffController {
         Staff staff = Staff.builder()
                 .id("quangsang@gmail.com")
                 .fullname("Vo Quang Sang")
-                .photo("img/qs.jpg")
+                .photo("qs.jpg")
                 .gender(true)
                 .birthday(new Date())
                 .salary(12345.6789)
