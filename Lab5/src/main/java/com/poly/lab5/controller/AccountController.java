@@ -13,14 +13,17 @@ import com.poly.lab5.service.UtilityService.SessionService;
 @Controller
 public class AccountController {
 
-    @Autowired CookieService cookie;
-    @Autowired ParamService param;
-    @Autowired SessionService session;
+    @Autowired
+    CookieService cookie;
+    @Autowired
+    ParamService param;
+    @Autowired
+    SessionService session;
 
     @GetMapping("/account/login")
     public String login1(Model model) {
         model.addAttribute("remembered", cookie.getValue("user"));
-        model.addAttribute("username", session.get("username")); // ✅ thêm để Thymeleaf dùng
+        model.addAttribute("username", session.get("username"));
         return "login";
     }
 
@@ -35,7 +38,7 @@ public class AccountController {
             if (rm) cookie.add("user", un, 24 * 10);
             else cookie.remove("user");
             model.addAttribute("message", "Đăng nhập thành công!");
-            model.addAttribute("username", un); // ✅ thêm dòng này
+            model.addAttribute("username", un);
         } else {
             model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");
         }
@@ -50,10 +53,22 @@ public class AccountController {
     }
 
     @PostMapping("/account/register")
-    public String registerSave(@RequestParam("photo") MultipartFile file, Model model) {
+    public String registerSave(
+            @RequestParam("name") String name,
+            @RequestParam("password") String password,
+            @RequestParam("photo") MultipartFile file,
+            Model model) {
+
         File saved = param.save(file, "/uploads");
-        model.addAttribute("msg",
-                (saved != null) ? "Ảnh đã lưu: " + saved.getName() : "Không có file upload");
+
+        String message = "";
+        if (saved != null) {
+            message = "Đăng ký thành công!<br>Họ tên: " + name + "<br>Mật khẩu: " + password + "<br>Ảnh đã lưu: " + saved.getName();
+        } else {
+            message = "Không có file upload hoặc lỗi khi lưu ảnh.";
+        }
+
+        model.addAttribute("msg", message);
         return "register";
     }
 }
