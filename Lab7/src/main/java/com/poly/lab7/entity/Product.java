@@ -11,6 +11,7 @@ public class Product {
     private Integer id;
 
     private String name;
+
     private Double price;
 
     @Temporal(TemporalType.DATE)
@@ -18,11 +19,9 @@ public class Product {
     private Date createDate = new Date();
 
     @ManyToOne
-    @JoinColumn(name = "CategoryId", referencedColumnName = "Id", nullable = true)
-    @org.hibernate.annotations.ColumnTransformer(read = "CategoryId", write = "?")
+    @JoinColumn(name = "CategoryId")
     private Category category;
 
-    // Getters & Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
