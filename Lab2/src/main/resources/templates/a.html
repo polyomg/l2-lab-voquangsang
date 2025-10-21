@@ -1,0 +1,25 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>A</title>
+</head>
+<body>
+<h2>Trang A</h2>
+
+<!-- message từ Model (khi forward từ /b) -->
+<p>Message (forward /b): <span th:text="${message}">[message]</span></p>
+
+<!-- message từ param (khi redirect từ /c) -->
+<p>Message (redirect /c): <span th:text="${param.message}">[param.message]</span></p>
+
+<hr/>
+
+<!-- Các link test -->
+<a th:href="@{/a}">Go to A</a> |
+<a th:href="@{/b}">Go to B (forward)</a> |
+<a th:href="@{/c}">Go to C (redirect)</a> |
+<a th:href="@{/d}">Go to D (responsebody)</a>
+
+</body>
+</html>

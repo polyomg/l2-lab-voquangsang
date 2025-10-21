@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab 8 - Bài 4</title>
+</head>
+<body>
+<h2>Đăng nhập hệ thống</h2>
+
+<!-- Hiển thị thông báo lỗi -->
+<i th:text="${param.error} == 'unauthorized' ? '⚠️ Bạn cần đăng nhập hoặc không có quyền truy cập!'
+        : (message != null ? message : '')">Error message</i>
+<br><br>
+
+<form action="/auth/login" method="post">
+    <label>Username:</label>
+    <input name="username" required>
+    <br>
+    <label>Password:</label>
+    <input name="password" type="password" required>
+    <hr>
+    <button>Login</button>
+</form>
+</body>
+</html>
